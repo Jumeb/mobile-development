@@ -8,8 +8,7 @@ import Button from '../../Component/Button/button.component';
 import Input from '../../Component/Input/input.component';
 import colorScheme from '../../../resources/Color/colorTheme';
 import styles from './userProfile.style';
-import {color} from 'react-native-reanimated';
-import colorTheme from '../../../resources/Color/colorTheme';
+import validateEmail from '../../Auth/Email/email.authentication';
 
 const UserProfile = () => {
   const [userName, setUserName] = useState('');
@@ -26,15 +25,23 @@ const UserProfile = () => {
     if (userName.length <= 4) {
       setUserNameError(true);
     }
-    if (email.length <= 4) {
+    if (!validateEmail(email)) {
       setEmailError(true);
+    }
+    if (number.length !== 9) {
+      setNumberError(true);
+    }
+    if (dateOfBirth.length <= 4) {
+      setDateOfBirthError(true);
     } else if (
       !emailError &&
       !userNameError &&
       userName.length > 4 &&
-      email.length > 4
+      email.length > 4 &&
+      validateEmail(email) &&
+      number.length === 9
     ) {
-      Actions.push('Feedback');
+      Actions.push('login');
     }
   };
 

@@ -14,8 +14,6 @@ const Routes = () => {
   return (
     <Router>
       <Stack key="root">
-        <Scene key="Filter" component={Filter} title="Filter" />
-        <Scene key="UserProfile" component={UserProfile} title="User Profile" />
         <Scene key="login" component={Login} title="Login" hideNavBar />
         <Scene key="signup" component={SignUp} title="SignUp" />
         <Scene key="Forgot" component={Forgot} title="Forgot Password" />
@@ -26,6 +24,8 @@ const Routes = () => {
         />
         <Scene key="Feedback" component={FeedbackScreen} title="Feed Back" />
         <Scene key="Submit" component={SubmitScreen} title="Submit Request" />
+        <Scene key="Filter" component={Filter} title="Filter" />
+        <Scene key="UserProfile" component={UserProfile} title="User Profile" />
       </Stack>
     </Router>
   );

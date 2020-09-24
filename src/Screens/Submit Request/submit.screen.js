@@ -5,6 +5,7 @@ import styles from './submit.style';
 import InputComponent from '../../Component/Input/input.component';
 import ButtonComponent from '../../Component/Button/button.component';
 import {Actions} from 'react-native-router-flux';
+import validateEmail from '../../Auth/Email/email.authentication';
 
 const SubmitScreen = () => {
   const [mail, setMail] = useState('');
@@ -22,15 +23,6 @@ const SubmitScreen = () => {
   const [attachmentError, setAttachmentError] = useState(false);
   const [subjectError, setSubjectError] = useState('');
 
-  const validateEmail = (email) => {
-    if (
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email,
-      )
-    ) {
-      return true;
-    }
-  };
 
   const authenticate = () => {
     if (!validateEmail(mail)) {
@@ -65,7 +57,7 @@ const SubmitScreen = () => {
       name.length > 4 &&
       validateEmail(mail)
     ) {
-      Actions.push('Submit');
+      Actions.push('Filter');
     }
   };
 

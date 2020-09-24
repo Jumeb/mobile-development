@@ -5,6 +5,7 @@ import styles from './feedback.style';
 import InputComponent from '../../Component/Input/input.component';
 import ButtonComponent from '../../Component/Button/button.component';
 import {Actions} from 'react-native-router-flux';
+import validateEmail from '../../Auth/Email/email.authentication';
 
 const FeedbackScreen = () => {
   const [mail, setMail] = useState('');
@@ -15,16 +16,6 @@ const FeedbackScreen = () => {
   const [nameError, setNameError] = useState(false);
   const [numberError, setNumberError] = useState(false);
   const [feedbackError, setFeedbackError] = useState(false);
-
-  const validateEmail = (email) => {
-    if (
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email,
-      )
-    ) {
-      return true;
-    }
-  };
 
   const authenticate = () => {
     if (!validateEmail(mail)) {

@@ -5,6 +5,8 @@ import {ScrollView, Text, View} from 'react-native';
 import styles from './signUp.style';
 import InputComponent from '../../Component/Input/input.component';
 import ButtonComponent from '../../Component/Button/button.component';
+import validateEmail from '../../Auth/Email/email.authentication';
+import {Actions} from 'react-native-router-flux';
 
 const SignUp = () => {
   const [user, setUser] = useState('');
@@ -17,16 +19,6 @@ const SignUp = () => {
   const [numberError, setNumberError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [conPasswordError, setConPasswordError] = useState(false);
-
-  const validateEmail = (mail) => {
-    if (
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        mail,
-      )
-    ) {
-      return true;
-    }
-  };
 
   const authenticate = () => {
     if (user.length <= 4) {
@@ -45,6 +37,8 @@ const SignUp = () => {
     if (conPassword.length <= 4 || password !== conPassword) {
       setPasswordError(true);
       setConPasswordError(true);
+    } else if (!userError && !emailError && !numberError && !conPasswordError) {
+      Actions.Filter();
     }
   };
 

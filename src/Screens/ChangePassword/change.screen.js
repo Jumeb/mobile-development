@@ -29,7 +29,7 @@ const Change = () => {
       !conPasswordError &&
       conPassword.length > 7
     ) {
-      Actions.login();
+      Actions.Feedback();
     }
   };
 

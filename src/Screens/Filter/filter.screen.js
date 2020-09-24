@@ -12,7 +12,7 @@ import colorTheme from '../../../resources/Color/colorTheme';
 
 const Filter = () => {
   const authenticate = () => {
-    Actions.push('login');
+    Actions.push('UserProfile');
   };
 
   const [selected, setSelected] = useState(1);

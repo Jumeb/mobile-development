@@ -5,20 +5,11 @@ import styles from './forgot.style';
 import InputComponent from '../../Component/Input/input.component';
 import ButtonComponent from '../../Component/Button/button.component';
 import {Actions} from 'react-native-router-flux';
+import validateEmail from '../../Auth/Email/email.authentication';
 
 const Forgot = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userEmailError, setUserEmailError] = useState(false);
-
-  const validateEmail = (mail) => {
-    if (
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        mail,
-      )
-    ) {
-      return true;
-    }
-  };
 
   const authenticate = () => {
     if (!validateEmail(userEmail)) {
